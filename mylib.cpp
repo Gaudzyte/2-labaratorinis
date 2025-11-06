@@ -1,4 +1,5 @@
 #include "mylib.h"
+#include "studentas.h"
 #include <fstream>
 #include <iostream>
 #include <algorithm>
@@ -9,40 +10,22 @@
 #include <fstream>
 using namespace std;
 
-vector<Studentas> NuskaitytiVector(const string &failas)
-{
-    ifstream fin(failas);
-    if (!fin)
-    {
-        cerr << "Nepavyko atidaryti failo: " << failas << endl;
+vector<Studentas> NuskaitytiVector(const string& failas) {
+    std::ifstream fin(failas);
+    if (!fin) {
+        std::cerr << "Nepavyko atidaryti failo: " << failas << std::endl;
         return {};
     }
 
-    string header;
-    getline(fin, header); // praleidžiam stulpelių eilutę
+    string eilute;
+    getline(fin, eilute); // praleidžia antraštę
 
     vector<Studentas> studentai;
     studentai.reserve(100000);
 
-    Studentas s;
-    while (fin >> s.var >> s.pav)
-    {
-        s.paz.clear();
-        int x;
-        for (int i = 0; i < 4; ++i)
-        {
-            if (!(fin >> x))
-                break;
-            s.paz.push_back(x);
-        }
-        fin >> s.egz;
-
-        double suma = 0;
-        for (int paz : s.paz)
-            suma += paz;
-        double vid = suma / s.paz.size();
-        s.gal_vid = vid * 0.4 + s.egz * 0.6;
-
+    while (getline(fin, eilute)) {
+        istringstream iss(eilute);
+        Studentas s(iss);
         studentai.push_back(s);
     }
 
@@ -55,7 +38,7 @@ void Paskirstymas_vector_1_strategija(const vector<Studentas> &Grupe, const int 
     vector<Studentas> Vargsai, Kietiakai;
     for (auto &stud : Grupe)
     {
-        if (stud.gal_vid < 5)
+        if (stud.galVid() < 5)
             Vargsai.push_back(stud);
         else
             Kietiakai.push_back(stud);
@@ -74,7 +57,7 @@ void Paskirstymas_vector_2_strategija(vector<Studentas> Grupe, const int irasu_s
     size_t newSize = 0;
     for (size_t i = 0; i < Grupe.size(); i++)
     {
-        if (Grupe[i].gal_vid < 5)
+        if (Grupe[i].galVid() < 5)
             Vargsai.push_back(Grupe[i]);
         else
             Grupe[newSize++] = std::move(Grupe[i]);
@@ -94,12 +77,12 @@ void Paskirstymas_vector_3_strategija(vector<Studentas>& Grupe, const int irasu_
 
     std::remove_copy_if(Grupe.begin(), Grupe.end(), std::back_inserter(Vargsai),
                         [](const Studentas& stud) {
-                            return stud.gal_vid >= 5;
+                            return stud.galVid() >= 5;
                         });
 
     auto new_end = std::remove_if(Grupe.begin(), Grupe.end(),
                                   [](const Studentas& stud) {
-                                      return stud.gal_vid < 5;
+                                      return stud.galVid() < 5;
                                   });
     Grupe.erase(new_end, Grupe.end());
 
@@ -116,7 +99,7 @@ void Paskirstymas_list_1_strategija(const list<Studentas> &Grupe, const int iras
     list<Studentas> Vargsai, Kietiakai;
     for (auto &stud : Grupe)
     {
-        if (stud.gal_vid < 5)
+        if (stud.galVid() < 5)
             Vargsai.push_back(stud);
         else
             Kietiakai.push_back(stud);
@@ -134,7 +117,7 @@ void Paskirstymas_list_2_strategija(list<Studentas> Grupe, const int irasu_sk, c
     list<Studentas> Vargsai;
     for (auto it = Grupe.begin(); it != Grupe.end();)
     {
-        if (it->gal_vid < 5)
+        if (it->galVid() < 5)
         {
             Vargsai.push_back(*it);
             it = Grupe.erase(it);
@@ -157,11 +140,11 @@ void Paskirstymas_list_3_strategija(list<Studentas>& Grupe, const int irasu_sk, 
 
     std::remove_copy_if(Grupe.begin(), Grupe.end(), std::back_inserter(Vargsai),
                         [](const Studentas& stud) {
-                            return stud.gal_vid >= 5;
+                            return stud.galVid() >= 5;
                         });
 
     Grupe.remove_if([](const Studentas& stud) {
-        return stud.gal_vid < 5;
+        return stud.galVid() < 5;
     });
 
     cout << irasu_sk << " irasu saraso padalijimo 3 strategijos laikas: "
@@ -192,24 +175,25 @@ void TestavimasIsFailo(const string &failas, int irasu_sk)
 }
 
 template <typename T>
-void Spausdinimas(const T &Spausd_gr, const int& strat, const std::string& failo_vardas) {
-    if (Spausd_gr.empty()) return;
+void Spausdinimas(const T& grupe, const int& strat, const std::string& failo_vardas) {
+    if (grupe.empty()) return;
 
     std::stringstream ss;
     ss << std::setw(15) << std::left << "Vardas"
        << std::setw(20) << std::left << "Pavarde"
-       << std::setw(17) << std::left << "Galutinis (Vid.)" << std::endl;
-    ss << std::string(52, '-') << std::endl;
+       << std::setw(17) << std::left << "Galutinis (Vid.)"
+       << std::setw(17) << std::left << "Galutinis (Med.)" << std::endl;
+    ss << std::string(70, '-') << std::endl;
 
-    for (const auto &Past : Spausd_gr) {
-        ss << std::setw(15) << std::left << Past.var
-           << std::setw(20) << std::left << Past.pav
-           << std::setw(17) << std::left << std::fixed
-           << std::setprecision(2) << Past.gal_vid << std::endl;
+    for (const auto& s : grupe) {
+        ss << std::setw(15) << std::left << s.vardas()
+           << std::setw(20) << std::left << s.pavarde()
+           << std::setw(17) << std::left << std::fixed << std::setprecision(2) << s.galVid()
+           << std::setw(17) << std::left << std::fixed << std::setprecision(2) << s.galMed()
+           << std::endl;
     }
 
-    auto it = Spausd_gr.begin();
-    std::string tipas = (it->gal_vid >= 5) ? "_kietiakai" : "_vargsiukai";
+    std::string tipas = (grupe.begin()->galVid() >= 5) ? "_kietiakai" : "_vargsiukai";
     std::string failoPav = failo_vardas.substr(0, failo_vardas.find_last_of('.')) +
                            tipas + std::to_string(strat) + ".txt";
 
