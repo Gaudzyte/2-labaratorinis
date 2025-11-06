@@ -11,8 +11,10 @@ Iš ankščiau naudotos struktūros kodas buvo modifikuotas į klasę.
    - exe failo dydžiai pagal kompiliatoriaus optimizavimo lygį naudojant vektorių 3 strategiją.
 <img width="759" height="223" alt="image" src="https://github.com/user-attachments/assets/e42b2cc6-370f-4340-9e04-6a3f7850745d" />
 
-
-
+**Išvados:**  
+   - Struct ir Class versijos spartumo skirtumai yra labai maži. Tačiau abejais atvejais Class realizacija dažniau buvo spartesnė: mažesnio duomenų kiekio atveju - 100'000 studentų, O1 ir O3 buvo net šiek tiek spartesnė, o su didesniu duomenų kiekiu-1'000'000 ties O1 ir O2 realizacijomis.
+   - Lyginant optimizacijas greičiausiai atliko O1.
+   - Lyginant .exe failų dydžius, galima matyti, kad Struct programų vykdomieji failai yra vidutiniškai 7–9 KB mažesni už Class versijos failus.
 
 
 ## **v0.1**
