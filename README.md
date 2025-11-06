@@ -1,9 +1,13 @@
 # Objektinis programavimas 
 
 ## **v1.1**
+Ankstesnės atliktos užduoties pagrindu sukurta nauja repozitorija 2-labaratorinis, kurioje išliko commit'ų istorija.
+
+Iš ankščiau naudotos struktūros kodas buvo modifikuotas į klasę.
 
 Palyginau v1.0 ir v1.1 spartą naudojant vektoriaus 3 strategiją su 100000 ir 1000000 dydžio failais.
 <img width="948" height="272" alt="image" src="https://github.com/user-attachments/assets/6f6fe4c7-5b50-40d7-8ff1-d3b82abc03d6" />
+
 
 
 
