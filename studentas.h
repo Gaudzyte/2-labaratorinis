@@ -20,22 +20,29 @@ class Studentas {
 
     double vidurkis() const;
     double mediana() const;
+    void skaiciuotiBalus();
 
 public:
     // Konstruktoriai
-    Studentas() : egz_(0), gal_vid_(0), gal_med_(0) {}
-    Studentas(istringstream& iss);
+    Studentas()
+        : vardas_(),
+          pavarde_(),
+          paz_(),
+          egz_(0),
+          gal_vid_(0.0),
+          gal_med_(0.0) {}
+
+    Studentas(std::istream& is);
 
     inline string vardas() const { return vardas_; }
     inline string pavarde() const { return pavarde_; }
     inline double galVid() const { return gal_vid_; }
     inline double galMed() const { return gal_med_; }
 
-    void keistiDuomenis(string, string, vector<int>, int);
+    std::istream& readStudent(std::istream& is);
 
-    void skaiciuotiBalus();
 
-    ~Studentas() {};
+    ~Studentas() = default;
 };
 
 #endif
