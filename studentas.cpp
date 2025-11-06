@@ -5,15 +5,39 @@
 
 using namespace std;
 
-Studentas::Studentas(istringstream& iss) {
+// Konstruktorius
+Studentas::Studentas(std::istream& is) {
+    readStudent(is);
+}
+
+// Nuskaito studento duomenis iš streamo į esamą objektą
+std::istream& Studentas::readStudent(std::istream& is) {
+    // išvalom senus duomenis (jei kas nors kviestų antrą kartą)
+    vardas_.clear();
+    pavarde_.clear();
+    paz_.clear();
+    egz_ = 0;
+    gal_vid_ = 0.0;
+    gal_med_ = 0.0;
+
+    if (!(is >> vardas_ >> pavarde_)) {
+        return is;
+    }
+
     int pazymys;
-    iss >> vardas_ >> pavarde_;
-    while (iss >> pazymys) {
+    while (is >> pazymys) {
         paz_.push_back(pazymys);
     }
-    egz_ = paz_.back();
-    paz_.pop_back();
+
+    if (!paz_.empty()) {
+        egz_ = paz_.back();
+        paz_.pop_back();
+    } else {
+        egz_ = 0;
+    }
+
     skaiciuotiBalus();
+    return is;
 }
 
 double Studentas::vidurkis() const {
@@ -37,12 +61,4 @@ double Studentas::mediana() const {
 void Studentas::skaiciuotiBalus() {
     gal_vid_ = 0.4 * vidurkis() + 0.6 * egz_;
     gal_med_ = 0.4 * mediana() + 0.6 * egz_;
-}
-
-void Studentas::keistiDuomenis(string v, string p, vector<int> paz, int e) {
-    vardas_ = v;
-    pavarde_ = p;
-    paz_ = paz;
-    egz_ = e;
-    skaiciuotiBalus();
 }
