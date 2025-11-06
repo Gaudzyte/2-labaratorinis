@@ -23,9 +23,20 @@ double Studentas::vidurkis() const {
     return suma / paz_.size();
 }
 
+double Studentas::mediana() const {
+    if (paz_.empty()) return 0.0;
+    vector<int> tmp = paz_;
+    sort(tmp.begin(), tmp.end());
+    size_t n = tmp.size();
+    if (n % 2 == 0)
+        return (tmp[n / 2 - 1] + tmp[n / 2]) / 2.0;
+    else
+        return tmp[n / 2];
+}
 
 void Studentas::skaiciuotiBalus() {
     gal_vid_ = 0.4 * vidurkis() + 0.6 * egz_;
+    gal_med_ = 0.4 * mediana() + 0.6 * egz_;
 }
 
 void Studentas::keistiDuomenis(string v, string p, vector<int> paz, int e) {
