@@ -6,7 +6,8 @@
 #include <chrono>
 #include <iomanip>    
 #include <sstream>     
-#include <string>       
+#include <string>     
+#include <limits>   
 #include <fstream>
 using namespace std;
 
@@ -200,4 +201,226 @@ void Spausdinimas(const T& grupe, const int& strat, const std::string& failo_var
     std::ofstream out(failoPav);
     out << ss.str();
     out.close();
+}
+
+void VartotojoIvedimas() {
+    int n;
+
+    cout << "Kiek studentu grupeje? ";
+    while (!(cin >> n) || n <= 0) {
+        cout << "Iveskite teigiama sveika skaiciu: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    vector<Studentas> grupe;
+    grupe.reserve(n);
+
+    for (int i = 0; i < n; ++i) {
+        string vardas, pavarde;
+        cout << "\nStudentas " << i + 1 << endl;
+
+        cout << "Vardas: ";
+        cin >> vardas;
+        cout << "Pavarde: ";
+        cin >> pavarde;
+
+        // isvalom buferi pries getline
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        vector<int> paz;
+        cout << "Iveskite namu darbu pazymius (0-10).\n";
+        cout << "Baigti ivedima: 2 kartus is eiles ENTER\n";
+
+        int tusciuEiluciuIsEiles = 0;
+        while (true) {
+            cout << "Pazymys " << paz.size() + 1 << ": ";
+            string line;
+            if (!std::getline(cin, line)) {
+                break;
+            }
+
+            if (line.empty()) {
+                tusciuEiluciuIsEiles++;
+                if (tusciuEiluciuIsEiles >= 2) {
+                    break; 
+                }
+                continue;
+            } else {
+                tusciuEiluciuIsEiles = 0;
+            }
+
+            std::istringstream iss(line);
+            int pazymys;
+            if (!(iss >> pazymys) || !(iss.eof())) {
+                cout << "Netinkama ivestis. Iveskite sveika skaiciu 0-10, arba tuscia eilute baigimui.\n";
+                continue;
+            }
+
+            if (pazymys < 0 || pazymys > 10) {
+                cout << "Pazymys turi buti tarp 0 ir 10.\n";
+                continue;
+            }
+
+            paz.push_back(pazymys);
+        }
+
+        int egz;
+        cout << "Egzamino pazymys: ";
+        while (true) {
+            if (!(cin >> egz)) {
+                cout << "Netinkama ivestis. Bandykite dar karta.\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            if (egz < 0 || egz > 10) {
+                cout << "Pazymys turi buti tarp 0 ir 10.\n";
+                continue;
+            }
+            break;
+        }
+
+        grupe.emplace_back(vardas, pavarde, paz, egz);
+    }
+
+    int rusiavimas;
+    cout << "\nPagal ka norite rusiuoti?" << endl;
+    cout << "1 - Pagal varda" << endl;
+    cout << "2 - Pagal pavarde" << endl;
+    cout << "3 - Pagal galutini pazymi (vid.)" << endl;
+    cout << "Jusu pasirinkimas: ";
+
+    while (true) {
+        if (!(cin >> rusiavimas)) {
+            cout << "Netinkama ivestis. Iveskite 1, 2 arba 3: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        if (rusiavimas < 1 || rusiavimas > 3) {
+            cout << "Pasirinkite 1, 2 arba 3: ";
+            continue;
+        }
+        break;
+    }
+
+    switch (rusiavimas) {
+        case 1:
+            sort(grupe.begin(), grupe.end(),
+                 [](const Studentas& a, const Studentas& b) {
+                     return a.vardas() < b.vardas();
+                 });
+            break;
+        case 2:
+            sort(grupe.begin(), grupe.end(),
+                 [](const Studentas& a, const Studentas& b) {
+                     return a.pavarde() < b.pavarde();
+                 });
+            break;
+        case 3:
+            sort(grupe.begin(), grupe.end(),
+                 [](const Studentas& a, const Studentas& b) {
+                     return a.galVid() > b.galVid();
+                 });
+            break;
+    }
+
+    cout << "\nRezultatai:\n";
+    cout << setw(15) << left << "Vardas"
+         << setw(20) << left << "Pavarde"
+         << setw(17) << left << "Galutinis (Vid.)"
+         << setw(17) << left << "Galutinis (Med.)" << endl;
+    cout << string(70, '-') << endl;
+
+    for (const auto& s : grupe) {
+        cout << setw(15) << left << s.vardas()
+             << setw(20) << left << s.pavarde()
+             << setw(17) << left << fixed << setprecision(2) << s.galVid()
+             << setw(17) << left << fixed << setprecision(2) << s.galMed()
+             << endl;
+    }
+}
+
+
+void PaprastasFailoApdorojimas() {
+    string failo_vardas;
+    cout << "Iveskite failo pavadinima (pvz. studentai.1000.txt): ";
+    cin >> failo_vardas;
+
+    {
+        std::ifstream test(failo_vardas);
+        if (!test) {
+            cout <<  failo_vardas << " nepavyko atidaryti.\n";
+            return;
+        }
+    }
+
+    vector<Studentas> Grupe = NuskaitytiVector(failo_vardas);
+    if (Grupe.empty()) {
+        cout << "Nepavyko nuskaityti duomenu is failo.\n";
+        return;
+    }
+
+    vector<Studentas> Vargsai;
+    vector<Studentas> Kietiakai;
+
+    for (const auto& s : Grupe) {
+        if (s.galVid() < 5.0)
+            Vargsai.push_back(s);
+        else
+            Kietiakai.push_back(s);
+    }
+
+    int rusiavimas;
+    cout << "\nPagal ka norite rusiuoti?\n";
+    cout << "1 - Pagal varda\n";
+    cout << "2 - Pagal pavarde\n";
+    cout << "3 - Pagal galutini pazymi (vid.)\n";
+    cout << "Jusu pasirinkimas: ";
+
+    while (true) {
+        if (!(cin >> rusiavimas)) {
+            cout << "Netinkama ivestis. Iveskite 1, 2 arba 3: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        if (rusiavimas < 1 || rusiavimas > 3) {
+            cout << "Pasirinkite 1, 2 arba 3: ";
+            continue;
+        }
+        break;
+    }
+
+    auto rikiuok = [rusiavimas](vector<Studentas>& gr) {
+        switch (rusiavimas) {
+        case 1:
+            sort(gr.begin(), gr.end(),
+                 [](const Studentas& a, const Studentas& b) {
+                     return a.vardas() < b.vardas();
+                 });
+            break;
+        case 2:
+            sort(gr.begin(), gr.end(),
+                 [](const Studentas& a, const Studentas& b) {
+                     return a.pavarde() < b.pavarde();
+                 });
+            break;
+        case 3:
+            sort(gr.begin(), gr.end(),
+                 [](const Studentas& a, const Studentas& b) {
+                     return a.galVid() > b.galVid();
+                 });
+            break;
+        }
+    };
+
+    rikiuok(Kietiakai);
+    rikiuok(Vargsai);
+
+    Spausdinimas(Kietiakai, 0, failo_vardas);
+    Spausdinimas(Vargsai, 0, failo_vardas);
+
+    cout << "Rezultatu failai sukurti.\n";
 }
