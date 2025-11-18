@@ -5,9 +5,24 @@
 
 using namespace std;
 
-// Konstruktorius
+// Konstruktorius (is streamo)
 Studentas::Studentas(std::istream& is) {
     readStudent(is);
+}
+
+// Konstruktorius (is rankinio ivedimo)
+Studentas::Studentas(const string& vardas,
+                     const string& pavarde,
+                     const vector<int>& paz,
+                     int egz)
+    : vardas_(vardas),
+      pavarde_(pavarde),
+      paz_(paz),
+      egz_(egz),
+      gal_vid_(0.0),
+      gal_med_(0.0)
+{
+    skaiciuotiBalus();
 }
 
 // Nuskaito studento duomenis iš streamo į esamą objektą
