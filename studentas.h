@@ -23,7 +23,6 @@ class Studentas {
     void skaiciuotiBalus();
 
 public:
-    // Konstruktoriai
     Studentas()
         : vardas_(),
           pavarde_(),
@@ -32,7 +31,14 @@ public:
           gal_vid_(0.0),
           gal_med_(0.0) {}
 
+    // is stream'o (failas)
     Studentas(std::istream& is);
+
+    // is rankinio ivedimo
+    Studentas(const std::string& vardas,
+              const std::string& pavarde,
+              const std::vector<int>& paz,
+              int egz);
 
     inline string vardas() const { return vardas_; }
     inline string pavarde() const { return pavarde_; }
@@ -41,8 +47,14 @@ public:
 
     std::istream& readStudent(std::istream& is);
 
-
-    ~Studentas() = default;
+    ~Studentas() {
+        vardas_.clear();
+        pavarde_.clear();
+        paz_.clear();
+        egz_ = 0;
+        gal_vid_ = 0.0;
+        gal_med_ = 0.0;
+    }
 };
 
 #endif
