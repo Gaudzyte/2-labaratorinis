@@ -26,5 +26,10 @@ void TestavimasIsFailo(const std::string& failas, int irasu_sk);
 template <typename T>
 void Spausdinimas(const T &Spausd_gr, const int& strat, const std::string& failo_vardas);
 
+// Vienas failas
+void PaprastasFailoApdorojimas();
+
+// rankinis ivedimas
+void VartotojoIvedimas();
 
 #endif
