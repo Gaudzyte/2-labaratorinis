@@ -1,4 +1,76 @@
 # Objektinis programavimas 
+## **v1.2**
+Buvo realizuota **"Rule of three"**:
+   - Kopijavimo konstruktorius
+   ```
+Studentas(const Studentas& other)
+    : vardas_(other.vardas_),
+      pavarde_(other.pavarde_),
+      paz_(other.paz_),
+      egz_(other.egz_),
+      gal_vid_(other.gal_vid_),
+      gal_med_(other.gal_med_) {}
+   ```
+   - Priskyrimo operatorius
+   ```
+Studentas& operator=(const Studentas& other){
+    if (this != &other) {
+        vardas_ = other.vardas_;
+        pavarde_ = other.pavarde_;
+        paz_     = other.paz_;
+        egz_     = other.egz_;
+        gal_vid_ = other.gal_vid_;
+        gal_med_ = other.gal_med_;
+    }
+    return *this;
+}
+   ```
+   - Destruktorius
+   ```
+~Studentas() {
+    vardas_.clear();
+    pavarde_.clear();
+    paz_.clear();
+    egz_ = 0;
+    gal_vid_ = 0.0;
+    gal_med_ = 0.0;
+}
+
+   ```
+
+Taip pat realizuota **įvesties/išvesties** operatorius turimai Studentas klasei:
+ 1. **Įvesties operatorius (>>)**
+   ```
+friend std::istream& operator>>(std::istream& is, Studentas& s);
+
+std::istream& operator>>(std::istream& in, Studentas& s)
+{
+    return s.readStudent(in);
+}
+   ```
+<img width="510" height="643" alt="image" src="https://github.com/user-attachments/assets/3a87a967-1a79-4ee4-8d09-fecbec1706ce" />
+
+   Leidžia įvesti:
+   -  Vardą;
+   -  Pavardę;
+   -  Namų darbų pažymius;
+   - Egzaminą.
+
+ 2. **Išvesties operatorius (>>)**
+
+
+
+   - Yra atliekama **išvestis į ekraną** po rankinio įvedimo VartotojoIvedimas():
+<img width="557" height="236" alt="image" src="https://github.com/user-attachments/assets/457266f8-bec5-4414-a172-1cbe3ae068db" />
+
+   - Yra atliekama **išvestis į failą**. Funkcija Spausdinimas sukuria rezultato failus (pvz: studentai.1000_kietiakai1.txt):
+   ```
+for (const auto& s : grupe) {
+    ss << s << std::endl;
+}
+   ```
+
+
 
 ## **v1.1**
 Ankstesnės atliktos užduoties pagrindu sukurta nauja repozitorija 2-labaratorinis, kurioje išliko commit'ų istorija.
