@@ -2,11 +2,20 @@
 #include <algorithm>  
 #include <iostream>   
 #include <sstream> 
+#include <iomanip>
 
 using namespace std;
 
+Studentas::Studentas()
+    : vardas_(),
+      pavarde_(),
+      paz_(),
+      egz_(0),
+      gal_vid_(0.0),
+      gal_med_(0.0)
+{}
 // Konstruktorius (is streamo)
-Studentas::Studentas(std::istream& is) {
+Studentas::Studentas(istream& is) {
     readStudent(is);
 }
 
@@ -25,8 +34,29 @@ Studentas::Studentas(const string& vardas,
     skaiciuotiBalus();
 }
 
+Studentas::Studentas(const Studentas& other)
+    : vardas_(other.vardas_),
+      pavarde_(other.pavarde_),
+      paz_(other.paz_),
+      egz_(other.egz_),
+      gal_vid_(other.gal_vid_),
+      gal_med_(other.gal_med_) {}
+
+// Kopijavimo priskyrimo operatorius
+Studentas& Studentas::operator=(const Studentas& other) {
+    if (this != &other) {
+        vardas_ = other.vardas_;
+        pavarde_ = other.pavarde_;
+        paz_     = other.paz_;
+        egz_     = other.egz_;
+        gal_vid_ = other.gal_vid_;
+        gal_med_ = other.gal_med_;
+    }
+    return *this;
+}
+
 // Nuskaito studento duomenis iš streamo į esamą objektą
-std::istream& Studentas::readStudent(std::istream& is) {
+istream& Studentas::readStudent(std::istream& is) {
     // išvalom senus duomenis (jei kas nors kviestų antrą kartą)
     vardas_.clear();
     pavarde_.clear();
@@ -55,6 +85,20 @@ std::istream& Studentas::readStudent(std::istream& is) {
     return is;
 }
 
+istream& operator>>(istream& in, Studentas& s)
+{
+    return s.readStudent(in);
+}
+
+ostream& operator<<(ostream& os, const Studentas& s) {
+    os << setw(15) << left << s.vardas()
+       << setw(20) << left << s.pavarde()
+       << setw(17) << left << fixed << setprecision(2) << s.galVid()
+       << setw(17) << left << fixed << setprecision(2) << s.galMed();
+    return os;
+}
+
+
 double Studentas::vidurkis() const {
     if (paz_.empty()) return 0.0;
     double suma = 0;
@@ -77,3 +121,4 @@ void Studentas::skaiciuotiBalus() {
     gal_vid_ = 0.4 * vidurkis() + 0.6 * egz_;
     gal_med_ = 0.4 * mediana() + 0.6 * egz_;
 }
+
