@@ -5,7 +5,11 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <sstream>
+#include <iomanip>
 
+using std::istream;
+using std::ostream;
 using std::string;
 using std::vector;
 using std::istringstream;
@@ -23,23 +27,25 @@ class Studentas {
     void skaiciuotiBalus();
 
 public:
-    Studentas()
-        : vardas_(),
-          pavarde_(),
-          paz_(),
-          egz_(0),
-          gal_vid_(0.0),
-          gal_med_(0.0) {}
-
-    // is stream'o (failas)
-    Studentas(std::istream& is);
-
-    // is rankinio ivedimo
-    Studentas(const std::string& vardas,
+    Studentas();              
+    explicit Studentas(std::istream& is); 
+    Studentas(const std::string& vardas,        // is rankinio ivedimo
               const std::string& pavarde,
               const std::vector<int>& paz,
-              int egz);
+              int egz);  
+              
+    Studentas(const Studentas& other); // kopijavimo konstruktorius
+    Studentas& operator=(const Studentas& other);// kopijavimo priskyrimas
 
+    ~Studentas(){    //Destruktorius
+        vardas_.clear();
+        pavarde_.clear();
+        paz_.clear();
+        egz_ = 0;
+        gal_vid_ = 0.0;
+        gal_med_ = 0.0;
+    }                
+   
     inline string vardas() const { return vardas_; }
     inline string pavarde() const { return pavarde_; }
     inline double galVid() const { return gal_vid_; }
@@ -47,14 +53,9 @@ public:
 
     std::istream& readStudent(std::istream& is);
 
-    ~Studentas() {
-        vardas_.clear();
-        pavarde_.clear();
-        paz_.clear();
-        egz_ = 0;
-        gal_vid_ = 0.0;
-        gal_med_ = 0.0;
-    }
+    friend std::istream& operator>>(std::istream& is, Studentas& s);
+    friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
+
 };
 
 #endif
