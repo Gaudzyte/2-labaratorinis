@@ -38,11 +38,12 @@ Studentas& operator=(const Studentas& other){
 
    ```
 
-Taip pat realizuota **įvesties/išvesties** operatorius turimai Studentas klasei:
+Taip pat realizuota **įvesties ir išvesties** operatoriai turimai Studentas klasei:
  1. **Įvesties operatorius (>>)**
    ```
 friend std::istream& operator>>(std::istream& is, Studentas& s);
-
+   ```
+   ```
 std::istream& operator>>(std::istream& in, Studentas& s)
 {
     return s.readStudent(in);
@@ -50,14 +51,28 @@ std::istream& operator>>(std::istream& in, Studentas& s)
    ```
 <img width="510" height="643" alt="image" src="https://github.com/user-attachments/assets/3a87a967-1a79-4ee4-8d09-fecbec1706ce" />
 
-   Leidžia įvesti:
-   -  Vardą;
-   -  Pavardę;
-   -  Namų darbų pažymius;
-   - Egzaminą.
+   - **Įvestis rankiniu būdu:**
+Vykdoma funkcijoje VartotojoIvedimas().
 
- 2. **Išvesties operatorius (>>)**
+Leidžia įvesti: vardą, pavardę, namų darbų pažymius, egzaminą.
 
+   - **Automatinė įvestis iš failo:**
+Atliekama funkcijoje NuskaitytiVector(const string& failas):
+<img width="715" height="526" alt="image" src="https://github.com/user-attachments/assets/da10743a-54b4-479c-9483-f6e51614b358" />
+
+ 2. **Išvesties operatorius (<<)**: Leidžia tvarkingai spausdinti studento duomenis į ekraną ar failą.
+   ```
+friend std::ostream& operator<<(std::ostream& os, const Studentas& s);
+   ```
+   ```
+std::ostream& operator<<(std::ostream& os, const Studentas& s) {
+    os << std::setw(15) << std::left << s.vardas()
+       << std::setw(20) << std::left << s.pavarde()
+       << std::setw(17) << std::left << std::fixed << std::setprecision(2) << s.galVid()
+       << std::setw(17) << std::left << std::fixed << std::setprecision(2) << s.galMed();
+    return os;
+}
+   ```
 
 
    - Yra atliekama **išvestis į ekraną** po rankinio įvedimo VartotojoIvedimas():
