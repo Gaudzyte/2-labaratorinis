@@ -26,7 +26,8 @@ vector<Studentas> NuskaitytiVector(const string& failas) {
 
     while (getline(fin, eilute)) {
         istringstream iss(eilute);
-        Studentas s(iss);
+        Studentas s;
+        iss >> s;           // naudoja perdengtą >> operatorių
         studentai.push_back(s);
     }
 
@@ -187,11 +188,7 @@ void Spausdinimas(const T& grupe, const int& strat, const std::string& failo_var
     ss << std::string(70, '-') << std::endl;
 
     for (const auto& s : grupe) {
-        ss << std::setw(15) << std::left << s.vardas()
-           << std::setw(20) << std::left << s.pavarde()
-           << std::setw(17) << std::left << std::fixed << std::setprecision(2) << s.galVid()
-           << std::setw(17) << std::left << std::fixed << std::setprecision(2) << s.galMed()
-           << std::endl;
+        ss << s << std::endl;   // naudoja perdengtą << operatorių
     }
 
     std::string tipas = (grupe.begin()->galVid() >= 5) ? "_kietiakai" : "_vargsiukai";
@@ -334,11 +331,7 @@ void VartotojoIvedimas() {
     cout << string(70, '-') << endl;
 
     for (const auto& s : grupe) {
-        cout << setw(15) << left << s.vardas()
-             << setw(20) << left << s.pavarde()
-             << setw(17) << left << fixed << setprecision(2) << s.galVid()
-             << setw(17) << left << fixed << setprecision(2) << s.galMed()
-             << endl;
+        cout << s << '\n';   
     }
 }
 
@@ -424,3 +417,5 @@ void PaprastasFailoApdorojimas() {
 
     cout << "Rezultatu failai sukurti.\n";
 }
+
+
