@@ -1,4 +1,9 @@
 # Objektinis programavimas 
+## **v1.5**
+
+<img width="1132" height="480" alt="image" src="https://github.com/user-attachments/assets/cff72549-1abc-4599-96b0-4c1febb83265" />
+
+
 ## **v1.2**
 Buvo realizuota **"Rule of three"**:
    - Kopijavimo konstruktorius
