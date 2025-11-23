@@ -7,15 +7,16 @@
 using namespace std;
 
 Studentas::Studentas()
-    : vardas_(),
-      pavarde_(),
+    : Zmogus(), 
       paz_(),
       egz_(0),
       gal_vid_(0.0),
       gal_med_(0.0)
 {}
 // Konstruktorius (is streamo)
-Studentas::Studentas(istream& is) {
+Studentas::Studentas(istream& is)
+    : Zmogus(), paz_(), egz_(0), gal_vid_(0.0), gal_med_(0.0)
+{
     readStudent(is);
 }
 
@@ -24,8 +25,7 @@ Studentas::Studentas(const string& vardas,
                      const string& pavarde,
                      const vector<int>& paz,
                      int egz)
-    : vardas_(vardas),
-      pavarde_(pavarde),
+    : Zmogus(vardas, pavarde),  
       paz_(paz),
       egz_(egz),
       gal_vid_(0.0),
@@ -34,9 +34,9 @@ Studentas::Studentas(const string& vardas,
     skaiciuotiBalus();
 }
 
+
 Studentas::Studentas(const Studentas& other)
-    : vardas_(other.vardas_),
-      pavarde_(other.pavarde_),
+    : Zmogus(other.vardas_, other.pavarde_),  // kopijuojam bazinę dalį
       paz_(other.paz_),
       egz_(other.egz_),
       gal_vid_(other.gal_vid_),
@@ -54,7 +54,6 @@ Studentas& Studentas::operator=(const Studentas& other) {
     }
     return *this;
 }
-
 // Nuskaito studento duomenis iš streamo į esamą objektą
 istream& Studentas::readStudent(std::istream& is) {
     // išvalom senus duomenis (jei kas nors kviestų antrą kartą)
@@ -90,6 +89,7 @@ istream& operator>>(istream& in, Studentas& s)
     return s.readStudent(in);
 }
 
+// operator<< (spausdina studentą į ostream)
 ostream& operator<<(ostream& os, const Studentas& s) {
     os << setw(15) << left << s.vardas()
        << setw(20) << left << s.pavarde()
@@ -121,4 +121,3 @@ void Studentas::skaiciuotiBalus() {
     gal_vid_ = 0.4 * vidurkis() + 0.6 * egz_;
     gal_med_ = 0.4 * mediana() + 0.6 * egz_;
 }
-
