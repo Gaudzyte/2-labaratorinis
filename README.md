@@ -1,7 +1,12 @@
 # Objektinis programavimas 
 ## **v1.5**
+Vietoje turimos vienos Studentas klasės buvo sukurta:
+  - Bazinė abstrakti klasė Žmogus, kuri apibūdina bendrus žmogaus atributus (vardas, pavardė) ir elgseną.
+  - Išvestinė Studento klasė iš Žmogaus palaikanti 1.2 versijoje realizuotą  „Rule of three“ taisyklę ir paveldinti vardą ir pavardę. 
 
+Žmogus aprašyta kaip abstrakti bazinė klasė, tad ji negali būti naudojama tiesioginiam objekto kūrimui.  Tad yra išvedama klaida:
 <img width="1132" height="480" alt="image" src="https://github.com/user-attachments/assets/cff72549-1abc-4599-96b0-4c1febb83265" />
+
 
 
 ## **v1.2**
