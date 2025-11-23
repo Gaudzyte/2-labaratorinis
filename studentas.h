@@ -8,15 +8,16 @@
 #include <sstream>
 #include <iomanip>
 
+#include "zmogus.h"
+
 using std::istream;
 using std::ostream;
 using std::string;
 using std::vector;
 using std::istringstream;
 
-class Studentas {
-    string vardas_;
-    string pavarde_;
+
+class Studentas : public Zmogus {
     vector<int> paz_;
     int egz_;
     double gal_vid_;
@@ -29,7 +30,8 @@ class Studentas {
 public:
     Studentas();              
     explicit Studentas(std::istream& is); 
-    Studentas(const std::string& vardas,        // is rankinio ivedimo
+        // is rankinio ivedimo
+    Studentas(const std::string& vardas,
               const std::string& pavarde,
               const std::vector<int>& paz,
               int egz);  
@@ -46,8 +48,8 @@ public:
         gal_med_ = 0.0;
     }                
    
-    inline string vardas() const { return vardas_; }
-    inline string pavarde() const { return pavarde_; }
+    string vardas() const override { return vardas_; }
+    string pavarde() const override { return pavarde_; }
     inline double galVid() const { return gal_vid_; }
     inline double galMed() const { return gal_med_; }
 
