@@ -6,11 +6,14 @@
 #include "studentas.h"
 #include "mylib.h"
 #include "timer.h"
+#include "zmogus.h" 
 
 using namespace std;
 
 int main() {
     ios::sync_with_stdio(false);
+
+    //Zmogus zmog;  //sukeltų klaidą: error: cannot declare variable 'zmog' to be of abstract type 'Zmogus'
 
     int pasirinkimas;
     cout << "Pasirinkite veiksma:\n";
@@ -31,11 +34,11 @@ int main() {
         cout << "Nuskaitomi failai\n" << flush;
 
         vector<pair<string, int>> failai = {
-            {"studentai.1000.txt", 1000},
-            {"studentai.10000.txt", 10000},
+            //{"studentai.1000.txt", 1000},
+            //{"studentai.10000.txt", 10000},
             {"studentai.100000.txt", 100000},
-            {"studentai.1000000.txt", 1000000},
-            {"studentai.10000000.txt", 10000000}
+            {"studentai.1000000.txt", 1000000}
+            //{"studentai.10000000.txt", 10000000}
         };
 
         for (auto& f : failai)
