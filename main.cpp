@@ -1,3 +1,28 @@
+/**
+ * @file main.cpp
+ * @brief Programos įėjimo taškas ir vartotojo meniu valdymas.
+ *
+ * Šis failas apibrėžia pagrindinę programos eigą:
+ * - pateikia vartotojui meniu su trimis pasirinkimais,
+ * - leidžia rankiniu būdu įvesti studentų duomenis,
+ * - nuskaito studentų failą ir jį apdoroja,
+ * - atlieka spartos testavimą naudojant skirtingus duomenų kiekius.
+ *
+ * Funkcijos šiame faile neapdoroja duomenų tiesiogiai — jos iškviečia
+ * kitus modulinius komponentus:
+ * - @c VartotojoIvedimas() – rankinei įvesčiai,
+ * - @c PaprastasFailoApdorojimas() – vieno failo apdorojimui,
+ * - @c TestavimasIsFailo() – spartos matavimui.
+ *
+ * Failas priklauso nuo:
+ * - studentas.h (studentų klasė),
+ * - mylib.h (logika ir apdorojimo funkcijos),
+ * - timer.h (spartos matavimas),
+ * - zmogus.h (bazinė klasė).
+ *
+ * Tai yra pagrindinis vykdomasis failas, kuris valdo visos programos veikimą.
+ */
+
 #include <iostream>
 #include <vector>
 #include <list>
