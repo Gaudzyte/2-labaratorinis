@@ -1,3 +1,30 @@
+/**
+ * @file mylib.cpp
+ * @brief Pagalbinės funkcijos studentų nuskaitymui, paskirstymui, spartos matavimui ir rezultatų spausdinimui.
+ *
+ * Šiame faile realizuojamos funkcijos, deklaruotos mylib.h faile:
+ *
+ * - Nuskaityti studentus iš tekstinio failo į @c std::vector<Studentas>:
+ *   - @c NuskaitytiVector()
+ * - Paskirstyti studentus į „vargšiukus“ ir „kietiakus“ pagal galutinį balą,
+ *   naudojant skirtingas strategijas ir skirtingus konteinerius:
+ *   - @c Paskirstymas_vector_1_strategija()
+ *   - @c Paskirstymas_vector_2_strategija()
+ *   - @c Paskirstymas_vector_3_strategija()
+ *   - @c Paskirstymas_list_1_strategija()
+ *   - @c Paskirstymas_list_2_strategija()
+ *   - @c Paskirstymas_list_3_strategija()
+ * - Atlikti spartos testavimą su skirtingo dydžio failais:
+ *   - @c TestavimasIsFailo()
+ * - Išspausdinti rezultatus į atskirus failus:
+ *   - @c Spausdinimas()
+ * - Vykdyti interaktyvų vartotojo sąveikos scenarijų:
+ *   - @c VartotojoIvedimas()
+ * - Apdoroti vieną pasirinktą failą be spartos testavimo:
+ *   - @c PaprastasFailoApdorojimas()
+ *
+ */
+
 #include "mylib.h"
 #include "studentas.h"
 #include <fstream>
