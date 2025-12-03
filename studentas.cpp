@@ -1,3 +1,23 @@
+/**
+ * @file studentas.cpp
+ * @brief Studentas klasės metodų implementacija.
+ *
+ * Šiame faile pateikiamos visos klasės @c Studentas funkcijų realizacijos:
+ * - konstruktoriai (numatytasis, iš srauto, rankinis įvedimas, kopijavimo),
+ * - kopijavimo priskyrimo operatorius,
+ * - įvesties operatorius >>,
+ * - išvesties operatorius <<,
+ * - pažymių skaičiavimo logika (vidurkis, mediana, galutiniai balai),
+ * - studento duomenų nuskaitymas iš @c std::istream.
+ *
+ * Failas yra glaudžiai susijęs su:
+ * - studentas.h (deklaracijos),
+ * - zmogus.h (paveldėjimas iš Zmogus),
+ * - mylib.h (Studentas naudojamas duomenų apdorojimo funkcijose).
+ *
+ * Tai yra pagrindinis failas, apibrėžiantis studento elgesį ir skaičiavimus.
+ */
+
 #include "studentas.h"
 #include <algorithm>  
 #include <iostream>   
