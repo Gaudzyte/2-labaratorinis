@@ -3,5 +3,5 @@ mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
-V1_0.exe
+V2_0.exe
 pause
