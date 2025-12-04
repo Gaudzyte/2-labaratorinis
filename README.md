@@ -1,4 +1,17 @@
 # Objektinis programavimas 
+## **v2.0**
+- Sukurta dokumentacija panaudojant Doxygen.
+- Realizuota Unit Test naudojant doctest. Tikrinta:
+  - Galutinis balas pagal vidurkį;
+  - Galutinis balas pagal medianą;
+  - Kai nera pažymių, galutiniai balai yra 0.
+ 
+
+<img width="915" height="857" alt="image" src="https://github.com/user-attachments/assets/f92ad0c8-ffd3-485e-acc8-5a6286a57d36" />
+
+Matome, kad viskas "passed", vadinasi sėkminngai buvo įvykdyti testai.
+
+
 ## **v1.5**
 Vietoje turimos vienos Studentas klasės buvo sukurta:
   - Bazinė abstrakti klasė Žmogus, kuri apibūdina bendrus žmogaus atributus (vardas, pavardė) ir elgseną.
