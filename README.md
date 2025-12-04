@@ -12,6 +12,15 @@
 Matome, kad viskas "passed", vadinasi sėkminngai buvo įvykdyti testai.
 
 
+**Naudojimosi ir įdiegimo instrukcija:**
+1. Atsisiųskite failus, CMakeLists.txt ir **runme.bat**
+2. Kompiuteryje sukurkite naują aplanką, kuriame vykdysite kodo paleidimą ir įkelkite CMakeLists.txt ir **runme.bat**
+3. Šiame aplankale taip pat sukurkite aplanką "src" ir "include".
+4. Į "src" aplankalą sukelkite atsisiųstus .cpp failus ir sugeneruotus studentų failus (studentai.1000.txt, studentai.10000.txt ir t.t.), o į "include" .h failus.
+5. Paspauskite ant **runme.bat** ir programa pradės veikti.
+
+
+
 ## **v1.5**
 Vietoje turimos vienos Studentas klasės buvo sukurta:
   - Bazinė abstrakti klasė Žmogus, kuri apibūdina bendrus žmogaus atributus (vardas, pavardė) ir elgseną.
