@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Studentu Projektas: src/mylib.cpp Failo Nuoroda</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Studentu Projektas
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Sugeneruota Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Paieška',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('src_2mylib_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">mylib.cpp Failo Nuoroda</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Pagalbinės funkcijos studentų nuskaitymui, paskirstymui, spartos matavimui ir rezultatų spausdinimui.  
+<a href="#details">Daugiau...</a></p>
+<div class="textblock"><code>#include &quot;mylib.h&quot;</code><br />
+<code>#include &quot;studentas.h&quot;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;limits&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funkcijos</h2></td></tr>
+<tr class="memitem:acc6b695f35410226fe8ab88d60387480" id="r_acc6b695f35410226fe8ab88d60387480"><td class="memItemLeft" align="right" valign="top"><a id="acc6b695f35410226fe8ab88d60387480" name="acc6b695f35410226fe8ab88d60387480"></a>
+vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>NuskaitytiVector</b> (const string &amp;failas)</td></tr>
+<tr class="memitem:a244f63f9be9d98ed2ac6d87325bba0f5" id="r_a244f63f9be9d98ed2ac6d87325bba0f5"><td class="memItemLeft" align="right" valign="top"><a id="a244f63f9be9d98ed2ac6d87325bba0f5" name="a244f63f9be9d98ed2ac6d87325bba0f5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Paskirstymas_vector_1_strategija</b> (const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;Grupe, const int irasu_sk, const string &amp;failo_vardas)</td></tr>
+<tr class="memitem:a9a5d8896bdb9de28f6c24b6a6f71905e" id="r_a9a5d8896bdb9de28f6c24b6a6f71905e"><td class="memItemLeft" align="right" valign="top"><a id="a9a5d8896bdb9de28f6c24b6a6f71905e" name="a9a5d8896bdb9de28f6c24b6a6f71905e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Paskirstymas_vector_2_strategija</b> (vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; Grupe, const int irasu_sk, const string &amp;failo_vardas)</td></tr>
+<tr class="memitem:a1ac383730a6fd2a86a6ed250a5d4e40f" id="r_a1ac383730a6fd2a86a6ed250a5d4e40f"><td class="memItemLeft" align="right" valign="top"><a id="a1ac383730a6fd2a86a6ed250a5d4e40f" name="a1ac383730a6fd2a86a6ed250a5d4e40f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Paskirstymas_vector_3_strategija</b> (vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;Grupe, const int irasu_sk, const string &amp;failo_vardas)</td></tr>
+<tr class="memitem:ad5e77e2ab13bc170341bcd84e2898115" id="r_ad5e77e2ab13bc170341bcd84e2898115"><td class="memItemLeft" align="right" valign="top"><a id="ad5e77e2ab13bc170341bcd84e2898115" name="ad5e77e2ab13bc170341bcd84e2898115"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Paskirstymas_list_1_strategija</b> (const list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;Grupe, const int irasu_sk, const string &amp;failo_vardas)</td></tr>
+<tr class="memitem:ace1afe38c6bf557302f2eb234039fc1c" id="r_ace1afe38c6bf557302f2eb234039fc1c"><td class="memItemLeft" align="right" valign="top"><a id="ace1afe38c6bf557302f2eb234039fc1c" name="ace1afe38c6bf557302f2eb234039fc1c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Paskirstymas_list_2_strategija</b> (list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; Grupe, const int irasu_sk, const string &amp;failo_vardas)</td></tr>
+<tr class="memitem:aa8256787f1b5e53a3cf30206034a79b1" id="r_aa8256787f1b5e53a3cf30206034a79b1"><td class="memItemLeft" align="right" valign="top"><a id="aa8256787f1b5e53a3cf30206034a79b1" name="aa8256787f1b5e53a3cf30206034a79b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Paskirstymas_list_3_strategija</b> (list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;Grupe, const int irasu_sk, const string &amp;failo_vardas)</td></tr>
+<tr class="memitem:aedaa1f162ed86df4117f392a5ae113f8" id="r_aedaa1f162ed86df4117f392a5ae113f8"><td class="memItemLeft" align="right" valign="top"><a id="aedaa1f162ed86df4117f392a5ae113f8" name="aedaa1f162ed86df4117f392a5ae113f8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>TestavimasIsFailo</b> (const string &amp;failas, int irasu_sk)</td></tr>
+<tr class="memitem:a1efea782c1e132b7e848c3be8ba16d81" id="r_a1efea782c1e132b7e848c3be8ba16d81"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:a1efea782c1e132b7e848c3be8ba16d81 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1efea782c1e132b7e848c3be8ba16d81">Spausdinimas</a> (const T &amp;grupe, const int &amp;strat, const std::string &amp;failo_vardas)</td></tr>
+<tr class="memdesc:a1efea782c1e132b7e848c3be8ba16d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Išspausdina (dažniausiai į failą) studentų grupės duomenis.  <br /></td></tr>
+<tr class="memitem:ace2df794cf2964cfd4a58a8a07fcc5d9" id="r_ace2df794cf2964cfd4a58a8a07fcc5d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace2df794cf2964cfd4a58a8a07fcc5d9">VartotojoIvedimas</a> ()</td></tr>
+<tr class="memdesc:ace2df794cf2964cfd4a58a8a07fcc5d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Leidžia vartotojui rankiniu būdu įvesti studentų duomenis iš klaviatūros.  <br /></td></tr>
+<tr class="memitem:ab24f6d54fe6aee55989de87d9c9aa612" id="r_ab24f6d54fe6aee55989de87d9c9aa612"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab24f6d54fe6aee55989de87d9c9aa612">PaprastasFailoApdorojimas</a> ()</td></tr>
+<tr class="memdesc:ab24f6d54fe6aee55989de87d9c9aa612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apdoroja vieną studentų failą naudojant numatytą logiką.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Smulkus aprašymas</h2>
+<div class="textblock"><p>Pagalbinės funkcijos studentų nuskaitymui, paskirstymui, spartos matavimui ir rezultatų spausdinimui. </p>
+<p>Šiame faile realizuojamos funkcijos, deklaruotos mylib.h faile:</p>
+<ul>
+<li>Nuskaityti studentus iš tekstinio failo į <code>std::vector&lt;Studentas&gt;</code>:<ul>
+<li><code>NuskaitytiVector()</code> </li>
+</ul>
+</li>
+<li>Paskirstyti studentus į „vargšiukus“ ir „kietiakus“ pagal galutinį balą, naudojant skirtingas strategijas ir skirtingus konteinerius:<ul>
+<li><code>Paskirstymas_vector_1_strategija()</code> </li>
+<li><code>Paskirstymas_vector_2_strategija()</code> </li>
+<li><code>Paskirstymas_vector_3_strategija()</code> </li>
+<li><code>Paskirstymas_list_1_strategija()</code> </li>
+<li><code>Paskirstymas_list_2_strategija()</code> </li>
+<li><code>Paskirstymas_list_3_strategija()</code> </li>
+</ul>
+</li>
+<li>Atlikti spartos testavimą su skirtingo dydžio failais:<ul>
+<li><code>TestavimasIsFailo()</code> </li>
+</ul>
+</li>
+<li>Išspausdinti rezultatus į atskirus failus:<ul>
+<li><code><a class="el" href="#a1efea782c1e132b7e848c3be8ba16d81" title="Išspausdina (dažniausiai į failą) studentų grupės duomenis.">Spausdinimas()</a></code> </li>
+</ul>
+</li>
+<li>Vykdyti interaktyvų vartotojo sąveikos scenarijų:<ul>
+<li><code><a class="el" href="#ace2df794cf2964cfd4a58a8a07fcc5d9" title="Leidžia vartotojui rankiniu būdu įvesti studentų duomenis iš klaviatūros.">VartotojoIvedimas()</a></code> </li>
+</ul>
+</li>
+<li>Apdoroti vieną pasirinktą failą be spartos testavimo:<ul>
+<li><code><a class="el" href="#ab24f6d54fe6aee55989de87d9c9aa612" title="Apdoroja vieną studentų failą naudojant numatytą logiką.">PaprastasFailoApdorojimas()</a></code> </li>
+</ul>
+</li>
+</ul>
+<p>Failas glaudžiai susijęs su:</p><ul>
+<li><code>studentas.h</code> / studentas.cpp (<a class="el" href="class_studentas.html" title="Klasė, reprezentuojanti studentą ir jo pažymius.">Studentas</a> klasė ir jos operatoriai),</li>
+<li><code>timer.h</code> (laiko matavimui),</li>
+<li><code>mylib.h</code> (funkcijų deklaracijos). </li>
+</ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funkcijos Dokumentacija</h2>
+<a id="ab24f6d54fe6aee55989de87d9c9aa612" name="ab24f6d54fe6aee55989de87d9c9aa612"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab24f6d54fe6aee55989de87d9c9aa612">&#9670;&#160;</a></span>PaprastasFailoApdorojimas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PaprastasFailoApdorojimas </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Apdoroja vieną studentų failą naudojant numatytą logiką. </p>
+<p>Tipiškai:</p><ul>
+<li>nuskaito failą,</li>
+<li>paskirsto studentus į grupes,</li>
+<li>išveda rezultatus. </li>
+</ul>
+
+</div>
+</div>
+<a id="a1efea782c1e132b7e848c3be8ba16d81" name="a1efea782c1e132b7e848c3be8ba16d81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1efea782c1e132b7e848c3be8ba16d81">&#9670;&#160;</a></span>Spausdinimas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void Spausdinimas </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;</td>          <td class="paramname"><span class="paramname"><em>Spausd_gr</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;</td>          <td class="paramname"><span class="paramname"><em>strat</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>failo_vardas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Išspausdina (dažniausiai į failą) studentų grupės duomenis. </p>
+<p>Tai šabloninė funkcija, kuri gali dirbti su įvairiais konteineriais (pvz. <code>std::vector&lt;Studentas&gt;</code>, <code>std::list&lt;Studentas&gt;</code> ir pan.), jei juos galima iteruoti „range-based for“ būdu.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Konteinerio tipas (pvz. vector, list). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parametrai</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Spausd_gr</td><td>Spausdinama studentų grupė. </td></tr>
+    <tr><td class="paramname">strat</td><td>Naudota strategija (numeris ar kodas), gali būti naudojama pavadinimuose ar papildomai informacijai. </td></tr>
+    <tr><td class="paramname">failo_vardas</td><td>Failo pavadinimas, į kurį bus išvedama. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ace2df794cf2964cfd4a58a8a07fcc5d9" name="ace2df794cf2964cfd4a58a8a07fcc5d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace2df794cf2964cfd4a58a8a07fcc5d9">&#9670;&#160;</a></span>VartotojoIvedimas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VartotojoIvedimas </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Leidžia vartotojui rankiniu būdu įvesti studentų duomenis iš klaviatūros. </p>
+<p>Dažniausiai kviečiama, kai vartotojas meniu pasirenka „rankinis įvedimas“. Gali:</p><ul>
+<li>paprašyti įvesti vardą, pavardę, pažymius, egzaminą,</li>
+<li>apskaičiuoti galutinius balus,</li>
+<li>išvesti rezultatus į ekraną ar failą. </li>
+</ul>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><a href="src_2mylib_8cpp.html">mylib.cpp</a></li>
+    <li class="footer">Sugeneruota <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>
