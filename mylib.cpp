@@ -322,6 +322,23 @@ void VartotojoIvedimas() {
                  });
             break;
     }
+        // ---------- TRIJU METODU TAISYKLES DEMONSTRACIJA ----------
+    if (!grupe.empty()) {
+        cout << "\n--- Triju metodu taisykles demonstracija ---\n";
+
+        Studentas a1 = grupe[0];
+        cout << "Studentas a1 (kopija is grupe[0]): " << a1 << endl;
+
+        Studentas a2(a1);
+        cout << "Studentas a2 (kopija is a1):        " << a2 << endl;
+
+        Studentas a3;
+        a3 = a1;
+        cout << "Studentas a3 (po priskyrimo a1):    " << a3 << endl;
+
+        cout << "-------------------------------------------\n";
+    }
+    // ---------- DEMONSTRACIJOS PABAIGA ----------
 
     cout << "\nRezultatai:\n";
     cout << setw(15) << left << "Vardas"
@@ -331,7 +348,7 @@ void VartotojoIvedimas() {
     cout << string(70, '-') << endl;
 
     for (const auto& s : grupe) {
-        cout << s << '\n';   
+        cout << s << '\n';   // naudoja perdengtą << operatorių
     }
 }
 
@@ -354,6 +371,21 @@ void PaprastasFailoApdorojimas() {
         cout << "Nepavyko nuskaityti duomenu is failo.\n";
         return;
     }
+        // ---------- TRIJU METODU TAISYKLES DEMONSTRACIJA ----------
+    cout << "\n--- Triju metodu taisykles demonstracija (is failo) ---\n";
+    if (!Grupe.empty()) {
+        Studentas a1 = Grupe[0];  
+        cout << "Studentas a1 (kopija is Grupe[0]): " << a1 << endl;
+
+        Studentas a2(a1);       
+        cout << "Studentas a2 (kopija is a1):        " << a2 << endl;
+
+        Studentas a3;          
+        a3 = a1;                 
+        cout << "Studentas a3 (po priskyrimo a1):    " << a3 << endl;
+    }
+    cout << "--------------------------------------------------------\n";
+    // ---------- DEMONSTRACIJOS PABAIGA ----------
 
     vector<Studentas> Vargsai;
     vector<Studentas> Kietiakai;
@@ -417,5 +449,4 @@ void PaprastasFailoApdorojimas() {
 
     cout << "Rezultatu failai sukurti.\n";
 }
-
 
