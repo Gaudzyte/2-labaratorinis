@@ -322,6 +322,24 @@ void VartotojoIvedimas() {
                  });
             break;
     }
+    // ---------- TRIJU METODU TAISYKLES DEMONSTRACIJA ----------
+if (!grupe.empty()) {
+    cout << "\n--- Triju metodu taisykles demonstracija ---\n";
+
+    Studentas a1 = grupe[0];   // kopijavimo konstruktorius
+    cout << "Studentas a1 (kopija is grupe[0]): " << a1 << endl;
+
+    Studentas a2(a1);          // dar vienas kopijavimo konstruktorius
+    cout << "Studentas a2 (kopija is a1):        " << a2 << endl;
+
+    Studentas a3;              // tuscias
+    a3 = a1;                   // kopijavimo priskyrimas
+    cout << "Studentas a3 (po priskyrimo a1):    " << a3 << endl;
+
+    cout << "-------------------------------------------\n";
+}
+// ---------- DEMONSTRACIJOS PABAIGA ----------
+
 
     cout << "\nRezultatai:\n";
     cout << setw(15) << left << "Vardas"
@@ -354,6 +372,22 @@ void PaprastasFailoApdorojimas() {
         cout << "Nepavyko nuskaityti duomenu is failo.\n";
         return;
     }
+
+    // ---------- TRIJU METODU TAISYKLES DEMONSTRACIJA ----------
+cout << "\n--- Triju metodu taisykles demonstracija (is failo) ---\n";
+
+Studentas a1 = Grupe[0];   // kopijavimo konstruktorius
+cout << "Studentas a1 (kopija is Grupe[0]): " << a1 << endl;
+
+Studentas a2(a1);          // dar viena kopija
+cout << "Studentas a2 (kopija is a1):        " << a2 << endl;
+
+Studentas a3;              // tuscias
+a3 = a1;                   // kopijavimo priskyrimas
+cout << "Studentas a3 (po priskyrimo a1):    " << a3 << endl;
+
+cout << "--------------------------------------------------------\n";
+// ---------- DEMONSTRACIJOS PABAIGA ----------
 
     vector<Studentas> Vargsai;
     vector<Studentas> Kietiakai;
@@ -417,5 +451,6 @@ void PaprastasFailoApdorojimas() {
 
     cout << "Rezultatu failai sukurti.\n";
 }
+
 
 
